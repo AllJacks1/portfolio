@@ -1,69 +1,62 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + HeroUI",
-  description: "Make beautiful websites regardless of your design experience.",
+  name: "My Portfolio",
+  description: "A sleek and personalized showcase of my web development projects, blending creativity and functionality through modern tech stacks and intuitive design.",
   navItems: [
     {
       label: "Home",
-      href: "/",
+      href: "#home",
     },
     {
-      label: "Docs",
-      href: "/docs",
+      label: "Projects",
+      href: "#projects",
     },
     {
-      label: "Pricing",
-      href: "/pricing",
+      label: "Experience",
+      href: "#experience",
     },
     {
-      label: "Blog",
-      href: "/blog",
+      label: "Team",
+      href: "#team",
     },
     {
-      label: "About",
-      href: "/about",
+      label: "Contact",
+      href: "#contact",
+    },
+    {
+      label: "Settings",
+      href: "#",
     },
   ],
   navMenuItems: [
     {
-      label: "Profile",
-      href: "/profile",
-    },
-    {
-      label: "Dashboard",
-      href: "/dashboard",
+      label: "Home",
+      href: "#home",
     },
     {
       label: "Projects",
-      href: "/projects",
+      href: "#projects",
+    },
+    {
+      label: "Experience",
+      href: "#experience",
     },
     {
       label: "Team",
-      href: "/team",
+      href: "#team",
     },
     {
-      label: "Calendar",
-      href: "/calendar",
+      label: "Contact",
+      href: "#contact",
     },
     {
       label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
+      href: "#",
     },
   ],
   links: {
     github: "https://github.com/heroui-inc/heroui",
-    twitter: "https://twitter.com/hero_ui",
-    docs: "https://heroui.com",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
+    discord: "https://discord.gg/heroui",
   },
 };
