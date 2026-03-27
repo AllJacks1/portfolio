@@ -1,4 +1,5 @@
 import { NavigationBar } from "./coomponents/NavigationBar"
+import AboutMe from "./coomponents/sections/AboutMe"
 import HeroSection from "./coomponents/sections/HeroSection"
 
 export default function Page() {
@@ -22,6 +23,7 @@ export default function Page() {
           specializing in software development, hardware troubleshooting,
           networking, and Arduino projects."
       />
+      <AboutMe/>
     </div>
   )
 }
