@@ -22,6 +22,33 @@ export default function AboutMe() {
     },
   ]
 
+  const skillCategories = [
+    {
+      title: "Software & Web Development",
+      icon: "💻",
+      skills: ["Next.js", "React Vite", "Flutter", "VB.NET"],
+      color: "blue",
+    },
+    {
+      title: "Databases & Backend",
+      icon: "🗄️",
+      skills: ["Supabase"],
+      color: "green",
+    },
+    {
+      title: "Hardware & Networking",
+      icon: "🔧",
+      skills: ["Troubleshooting", "Network Setup", "Arduino"],
+      color: "orange",
+    },
+    {
+      title: "Exploration & Homelab",
+      icon: "🏠",
+      skills: ["OPNsense Firewall", "Pi-hole"],
+      color: "purple",
+    },
+  ]
+
   return (
     <section id="about" className="relative bg-neutral-950 py-24 sm:py-32">
       {/* Subtle Background */}
@@ -49,7 +76,7 @@ export default function AboutMe() {
           {milestones.map((milestone, index) => (
             <div key={milestone.title} className="group relative md:pl-24">
               {/* Timeline Node */}
-              <div className="absolute top-0 left-0 flex hidden h-16 w-16 items-center justify-center rounded-2xl border border-neutral-800 bg-neutral-900 text-2xl shadow-2xl shadow-black/50 transition-all duration-300 group-hover:scale-110 group-hover:border-neutral-700 md:flex">
+              <div className="absolute top-0 left-0 hidden h-16 w-16 items-center justify-center rounded-2xl border border-neutral-800 bg-neutral-900 text-2xl shadow-2xl shadow-black/50 transition-all duration-300 group-hover:scale-110 group-hover:border-neutral-700 md:flex">
                 {milestone.icon}
               </div>
 
@@ -112,6 +139,54 @@ export default function AboutMe() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Skills & Technologies Section */}
+        <div className="mt-20 sm:mt-24">
+          <div className="mb-12 text-center">
+            <span className="mb-4 inline-block rounded-full border border-neutral-800 bg-neutral-900 px-4 py-1.5 text-xs font-medium tracking-wide text-neutral-400 uppercase">
+              My Toolkit
+            </span>
+            <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              Skills & Technologies
+            </h3>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {skillCategories.map((category) => (
+              <div
+                key={category.title}
+                className="group rounded-2xl border border-neutral-800/50 bg-neutral-900/30 p-6 backdrop-blur-sm transition-all duration-300 hover:border-neutral-700/50 hover:bg-neutral-900/50"
+              >
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-800 text-lg transition-colors duration-300 group-hover:bg-neutral-700">
+                    {category.icon}
+                  </span>
+                  <h4 className="text-sm font-semibold text-white">
+                    {category.title}
+                  </h4>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className={`rounded-full bg-neutral-800/50 px-2.5 py-1 text-xs text-neutral-300 transition-colors duration-300 hover:bg-neutral-700/50 ${
+                        category.color === "blue"
+                          ? "hover:text-blue-400"
+                          : category.color === "green"
+                            ? "hover:text-green-400"
+                            : category.color === "orange"
+                              ? "hover:text-orange-400"
+                              : "hover:text-purple-400"
+                      }`}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Bottom CTA */}
