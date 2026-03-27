@@ -1,5 +1,8 @@
 import { MenuIcon } from "lucide-react"
 import { SocialIcon } from "./SocialIcon"
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Separator } from "@/components/ui/separator"
 
 export const NavigationBar = () => {
   const navItems = ["Home", "Projects", "Experience", "Contact", "About"]
@@ -37,23 +40,66 @@ export const NavigationBar = () => {
         </div>
 
         {/* Social Icons */}
-        <div className="flex items-center gap-4">
+        <div className="hidden items-center gap-2 md:flex">
           {socialLinks.map((social) => (
-            <a
+            <Button
               key={social.name}
-              href={social.href}
-              aria-label={social.name}
-              className="p-1 text-neutral-400 transition-colors duration-200 hover:text-neutral-900"
+              variant="ghost"
+              size="icon"
+              asChild
+              className="h-8 w-8 text-neutral-400 hover:text-neutral-900"
             >
-              <SocialIcon name={social.icon} className="h-4 w-4" />
-            </a>
+              <a href={social.href} aria-label={social.name}>
+                <SocialIcon name={social.icon} className="h-4 w-4" />
+              </a>
+            </Button>
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
-        <button className="p-2 text-neutral-600 hover:text-neutral-900 md:hidden">
-          <MenuIcon className="h-5 w-5" />
-        </button>
+        {/* Mobile Menu */}
+        <Sheet>
+          <SheetTrigger asChild className="md:hidden">
+            <Button variant="ghost" size="icon" className="h-8 w-8">
+              <MenuIcon className="h-5 w-5" />
+              <span className="sr-only">Toggle menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-[300px]">
+            <div className="flex flex-col gap-6">
+              {/* Mobile Nav Items */}
+              <div className="flex flex-col gap-4">
+                {navItems.map((item) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    className="text-lg font-medium text-neutral-900 transition-colors hover:text-neutral-600"
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
+
+              <Separator />
+
+              {/* Mobile Social Links */}
+              <div className="flex gap-2">
+                {socialLinks.map((social) => (
+                  <Button
+                    key={social.name}
+                    variant="outline"
+                    size="icon"
+                    asChild
+                    className="h-9 w-9"
+                  >
+                    <a href={social.href} aria-label={social.name}>
+                      <SocialIcon name={social.icon} className="h-4 w-4" />
+                    </a>
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </nav>
   )

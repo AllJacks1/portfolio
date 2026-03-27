@@ -1,5 +1,8 @@
 import { HeroSectionPageProps } from "@/lib/interfaces"
 import React from "react"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { ArrowRight, ChevronDown } from "lucide-react"
 
 export default function HeroSection({
   techStack,
@@ -22,16 +25,17 @@ export default function HeroSection({
       <div className="absolute right-1/4 bottom-1/4 h-96 w-96 animate-pulse rounded-full bg-purple-500/20 blur-3xl delay-1000" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 py-20 text-center">
-        {/* Tech Stack Pills */}
+        {/* Tech Stack Pills - Using Badge */}
         <div className="mb-8 flex flex-wrap justify-center gap-3">
           {techStack.map((tech) => (
-            <span
+            <Badge
               key={tech.name}
-              className="inline-flex items-center gap-1.5 rounded-full border border-neutral-800 bg-neutral-900/50 px-3 py-1.5 text-xs font-medium text-neutral-400 backdrop-blur-sm transition-all duration-300 hover:border-neutral-700 hover:text-neutral-200"
+              variant="outline"
+              className="border-neutral-800 bg-neutral-900/50 px-3 py-1.5 text-xs font-medium text-neutral-400 backdrop-blur-sm transition-all duration-300 hover:border-neutral-700 hover:text-neutral-200"
             >
-              <span className="text-sm">{tech.icon}</span>
+              <span className="mr-1.5 text-sm">{tech.icon}</span>
               {tech.name}
-            </span>
+            </Badge>
           ))}
         </div>
 
@@ -53,51 +57,32 @@ export default function HeroSection({
           {description}
         </p>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons - Using Button component */}
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href="#projects"
-            className="group relative inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-medium text-neutral-950 transition-all duration-300 hover:scale-105 hover:bg-neutral-200 active:scale-95"
+          <Button
+            asChild
+            size="lg"
+            className="group rounded-full bg-white px-8 text-neutral-950 transition-all duration-300 hover:scale-105 hover:bg-white active:scale-95 hover:text-neutral-500"
           >
-            View My Work
-            <svg
-              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
+            <a href="#projects">
+              View My Work
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </Button>
 
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-neutral-800 px-8 py-4 text-sm font-medium text-neutral-300 transition-all duration-300 hover:border-neutral-600 hover:bg-neutral-900/50 hover:text-white"
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="rounded-full border-neutral-600 px-8 text-white transition-all duration-300 bg-neutral-900/50 hover:border-neutral-800 hover:bg-neutral-900 hover:text-neutral-500"
           >
-            Get in Touch
-          </a>
+            <a href="#contact">Get in Touch</a>
+          </Button>
         </div>
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <svg
-            className="h-5 w-5 text-neutral-600"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
+          <ChevronDown className="h-5 w-5 text-neutral-600" />
         </div>
       </div>
     </section>
