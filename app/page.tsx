@@ -1,14 +1,27 @@
 import { NavigationBar } from "./coomponents/NavigationBar"
+import HeroSection from "./coomponents/sections/HeroSection"
 
 export default function Page() {
+  const techStack = [
+    { name: "Next.js", icon: "▲" },
+    { name: "Supabase", icon: "⚡" },
+    { name: "React", icon: "⚛" },
+    { name: "Vite", icon: "🚀" },
+    { name: "Flutter", icon: "💠" },
+  ]
+
   return (
-    <div className="flex min-h-svh p-6">
-      <NavigationBar/>
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-        </div>
-      </div>
+    <div>
+      <NavigationBar />
+      <HeroSection
+        techStack={techStack}
+        fullName="Karl Christian Tan"
+        subTitle="A Web Developer passionate about building and innovating in
+          technology. Crafting modern web experiences with cutting-edge tools."
+        description="Information Technology graduate from the University of Mindanao,
+          specializing in software development, hardware troubleshooting,
+          networking, and Arduino projects."
+      />
     </div>
   )
 }
