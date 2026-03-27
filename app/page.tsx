@@ -23,7 +23,7 @@ export default function Page() {
           specializing in software development, hardware troubleshooting,
           networking, and Arduino projects."
       />
-      <AboutMe/>
+      <AboutMe />
     </div>
   )
 }
