@@ -1,6 +1,8 @@
 import { NavigationBar } from "./coomponents/NavigationBar"
 import AboutMe from "./coomponents/sections/AboutMe"
+import Footer from "./coomponents/sections/Footer"
 import HeroSection from "./coomponents/sections/HeroSection"
+import Projects from "./coomponents/sections/Projects"
 
 export default function Page() {
   const techStack = [
@@ -24,6 +26,9 @@ export default function Page() {
           networking, and Arduino projects."
       />
       <AboutMe />
+      <Projects/>
+      <div className="py-16 bg-neutral-950" />
+      <Footer />
     </div>
   )
 }

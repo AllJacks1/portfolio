@@ -462,40 +462,6 @@ export default function AboutMe() {
             ))}
           </motion.div>
         </motion.div>
-
-        {/* Bottom CTA with Fade In */}
-        <motion.div
-          className="mt-16 text-center sm:mt-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <p className="mb-6 text-sm text-neutral-500">
-            Want to see how I apply these skills?
-          </p>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button
-              variant="link"
-              asChild
-              className="group h-auto gap-2 p-0 text-white hover:no-underline"
-            >
-              <a
-                href="#projects"
-                className="inline-flex items-center border-b border-neutral-700 p-2 transition-colors duration-300 hover:border-white"
-              >
-                Explore my projects
-                <motion.span
-                  initial={{ x: 0 }}
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <ArrowRight className="h-4 w-4" />
-                </motion.span>
-              </a>
-            </Button>
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   )

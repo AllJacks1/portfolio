@@ -5,13 +5,13 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
 
 export const NavigationBar = () => {
-  const navItems = ["Home", "Projects", "Experience", "Contact", "About"]
+  const navItems = ["Home", "Projects", "Contact", "About"]
 
   const socialLinks = [
-    { name: "GitHub", icon: "github", href: "#" },
-    { name: "Facebook", icon: "facebook", href: "#" },
-    { name: "LinkedIn", icon: "linkedin", href: "#" },
-    { name: "Gmail", icon: "mail", href: "#" },
+    { name: "GitHub", icon: "github", href: "https://github.com/AllJacks1" },
+    { name: "Facebook", icon: "facebook", href: "https://facebook.com/mantis02/" },
+    { name: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/in/karl-christian-tan-366740227/" },
+    { name: "Gmail", icon: "mail", href: "mailto:tankarlchristian@gmail.com" },
   ]
 
   return (
@@ -49,7 +49,7 @@ export const NavigationBar = () => {
               asChild
               className="h-8 w-8 text-neutral-400 hover:text-neutral-900"
             >
-              <a href={social.href} aria-label={social.name}>
+              <a href={social.href} aria-label={social.name} target="_blank" rel="noopener noreferrer">
                 <SocialIcon name={social.icon} className="h-4 w-4" />
               </a>
             </Button>
