@@ -5,6 +5,7 @@ import ExperienceEducation from "./coomponents/sections/ExperienceAndEducation"
 import Footer from "./coomponents/sections/Footer"
 import HeroSection from "./coomponents/sections/HeroSection"
 import Projects from "./coomponents/sections/Projects"
+import ResumeDownload from "./coomponents/sections/Resume"
 import SkillsToolkit from "./coomponents/sections/SkillsAndToolkit"
 import TrustedTechnologies from "./coomponents/sections/TrustedTechnologies"
 
@@ -18,6 +19,7 @@ export default function Page() {
       <SkillsToolkit/>
       <ExperienceEducation/>
       <Certifications/>
+      <ResumeDownload/>
       <Footer />
     </div>
   )
