@@ -59,13 +59,6 @@ export default function Navbar() {
           }}
           className="group flex items-center gap-2"
         >
-          <div className="relative">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#4F46E5] to-[#06B6D4] shadow-lg shadow-[#4F46E5]/20 transition-shadow duration-300 group-hover:shadow-[#4F46E5]/40">
-              <span className="text-lg font-bold tracking-tight text-white">
-                K
-              </span>
-            </div>
-          </div>
           <span className="text-xl font-bold tracking-tight text-[#E5E7EB] transition-colors group-hover:text-white">
             KCT
           </span>
