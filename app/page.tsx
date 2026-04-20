@@ -1,4 +1,4 @@
-import { NavigationBar } from "./coomponents/NavigationBar"
+import Navbar from "./coomponents/NavigationBar"
 import AboutMe from "./coomponents/sections/AboutMe"
 import Footer from "./coomponents/sections/Footer"
 import HeroSection from "./coomponents/sections/HeroSection"
@@ -15,7 +15,7 @@ export default function Page() {
 
   return (
     <div>
-      <NavigationBar />
+      <Navbar />
       <HeroSection
         techStack={techStack}
         fullName="Karl Christian Tan"

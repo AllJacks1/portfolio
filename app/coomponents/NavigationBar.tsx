@@ -1,106 +1,168 @@
-import { MenuIcon } from "lucide-react"
-import { SocialIcon } from "./SocialIcon"
+"use client"
+
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Separator } from "@/components/ui/separator"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet"
+import { Menu, Download, X } from "lucide-react"
+import { cn } from "@/lib/utils"
 
-export const NavigationBar = () => {
-  const navItems = ["Home", "Projects", "Contact", "About"]
+const navLinks = [
+  { name: "Home", href: "#home" },
+  { name: "Projects", href: "#projects" },
+  { name: "Skills", href: "#skills" },
+  { name: "Certifications", href: "#certifications" },
+  { name: "About", href: "#about" },
+  { name: "Contact", href: "#contact" },
+]
 
-  const socialLinks = [
-    { name: "GitHub", icon: "github", href: "https://github.com/AllJacks1" },
-    { name: "Facebook", icon: "facebook", href: "https://facebook.com/mantis02/" },
-    { name: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/in/karl-christian-tan-366740227/" },
-    { name: "Gmail", icon: "mail", href: "mailto:tankarlchristian@gmail.com" },
-  ]
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const handleNavClick = (href: string) => {
+    setIsOpen(false)
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   return (
-    <nav className="fixed top-0 right-0 left-0 z-50 border-b border-neutral-100 bg-white/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        {/* Logo / Brand */}
+    <header
+      className={cn(
+        "fixed top-0 right-0 left-0 z-50 transition-all duration-300",
+        isScrolled
+          ? "border-b border-white/5 bg-[#0F172A]/80 shadow-lg shadow-black/5 backdrop-blur-xl"
+          : "bg-transparent"
+      )}
+    >
+      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+        {/* Logo */}
         <a
-          href="#"
-          className="text-sm font-medium tracking-tight text-neutral-900 transition-colors duration-200 hover:text-neutral-600"
+          href="#home"
+          onClick={(e) => {
+            e.preventDefault()
+            handleNavClick("#home")
+          }}
+          className="group flex items-center gap-2"
         >
-          Web Developer
+          <div className="relative">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#4F46E5] to-[#06B6D4] shadow-lg shadow-[#4F46E5]/20 transition-shadow duration-300 group-hover:shadow-[#4F46E5]/40">
+              <span className="text-lg font-bold tracking-tight text-white">
+                K
+              </span>
+            </div>
+          </div>
+          <span className="text-xl font-bold tracking-tight text-[#E5E7EB] transition-colors group-hover:text-white">
+            KCT
+          </span>
         </a>
 
-        {/* Navigation Links - Desktop */}
-        <div className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
+        {/* Desktop Navigation */}
+        <div className="hidden items-center gap-1 md:flex">
+          {navLinks.map((link) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="group relative text-sm text-neutral-500 transition-colors duration-200 hover:text-neutral-900"
+              key={link.name}
+              href={link.href}
+              onClick={(e) => {
+                e.preventDefault()
+                handleNavClick(link.href)
+              }}
+              className="relative rounded-lg px-4 py-2 text-sm font-medium text-[#9CA3AF] transition-colors duration-200 hover:bg-white/5 hover:text-[#E5E7EB]"
             >
-              {item}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-neutral-900 transition-all duration-300 group-hover:w-full" />
+              {link.name}
             </a>
           ))}
         </div>
 
-        {/* Social Icons */}
-        <div className="hidden items-center gap-2 md:flex">
-          {socialLinks.map((social) => (
-            <Button
-              key={social.name}
-              variant="ghost"
-              size="icon"
-              asChild
-              className="h-8 w-8 text-neutral-400 hover:text-neutral-900"
-            >
-              <a href={social.href} aria-label={social.name} target="_blank" rel="noopener noreferrer">
-                <SocialIcon name={social.icon} className="h-4 w-4" />
-              </a>
-            </Button>
-          ))}
+        {/* Desktop CTA */}
+        <div className="hidden md:block">
+          <Button className="bg-gradient-to-r from-[#4F46E5] to-[#06B6D4] px-6 font-semibold text-white shadow-lg shadow-[#4F46E5]/25 transition-all duration-300 hover:scale-[1.02] hover:from-[#4338CA] hover:to-[#0891B2] hover:shadow-[#4F46E5]/40 active:scale-[0.98]">
+            <Download className="mr-2 h-4 w-4" />
+            Download Resume
+          </Button>
         </div>
 
         {/* Mobile Menu */}
-        <Sheet>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon" className="h-8 w-8">
-              <MenuIcon className="h-5 w-5" />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-[#E5E7EB] hover:bg-white/10 hover:text-white"
+            >
+              <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px]">
-            <div className="flex flex-col gap-6">
-              {/* Mobile Nav Items */}
-              <div className="flex flex-col gap-4">
-                {navItems.map((item) => (
+          <SheetContent
+            side="right"
+            className="w-full border-l border-white/10 bg-[#111827] p-0 sm:w-80"
+          >
+            <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+            <div className="flex h-full flex-col">
+              {/* Mobile Header */}
+              <div className="flex items-center justify-between border-b border-white/5 p-6">
+                <div className="flex items-center gap-2">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#4F46E5] to-[#06B6D4]">
+                    <span className="text-sm font-bold text-white">K</span>
+                  </div>
+                  <span className="text-lg font-bold text-[#E5E7EB]">KCT</span>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsOpen(false)}
+                  className="text-[#9CA3AF] hover:bg-white/10 hover:text-white"
+                >
+                  <X className="h-5 w-5" />
+                </Button>
+              </div>
+
+              {/* Mobile Navigation Links */}
+              <div className="flex-1 space-y-1 px-4 py-6">
+                {navLinks.map((link, index) => (
                   <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="text-lg font-medium text-neutral-900 transition-colors hover:text-neutral-600"
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleNavClick(link.href)
+                    }}
+                    className="flex items-center rounded-xl px-4 py-3 text-base font-medium text-[#9CA3AF] transition-all duration-200 hover:bg-white/5 hover:text-[#E5E7EB]"
+                    style={{
+                      animationDelay: `${index * 50}ms`,
+                    }}
                   >
-                    {item}
+                    {link.name}
                   </a>
                 ))}
               </div>
 
-              <Separator />
-
-              {/* Mobile Social Links */}
-              <div className="flex gap-2">
-                {socialLinks.map((social) => (
-                  <Button
-                    key={social.name}
-                    variant="outline"
-                    size="icon"
-                    asChild
-                    className="h-9 w-9"
-                  >
-                    <a href={social.href} aria-label={social.name}>
-                      <SocialIcon name={social.icon} className="h-4 w-4" />
-                    </a>
-                  </Button>
-                ))}
+              {/* Mobile CTA */}
+              <div className="border-t border-white/5 p-6">
+                <Button className="w-full bg-gradient-to-r from-[#4F46E5] to-[#06B6D4] py-6 font-semibold text-white shadow-lg shadow-[#4F46E5]/25 transition-all duration-300 hover:from-[#4338CA] hover:to-[#0891B2] active:scale-[0.98]">
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </Button>
               </div>
             </div>
           </SheetContent>
         </Sheet>
-      </div>
-    </nav>
+      </nav>
+    </header>
   )
 }
