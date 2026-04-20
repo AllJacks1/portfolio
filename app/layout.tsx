@@ -1,74 +1,141 @@
-import { Geist_Mono, Inter } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { Inter, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
-import type { Metadata } from "next"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 })
 
+/* =========================
+   SEO METADATA
+========================= */
 export const metadata: Metadata = {
-  title: "Karl Christian Tan | Web Developer & Software Builder",
+  metadataBase: new URL("https://mantis-portfolio.vercel.app"),
+
+  title: {
+    default: "Karl Christian Tan | Web Developer & Software Builder",
+    template: "%s | Karl Christian Tan",
+  },
+
   description:
     "Portfolio of Karl Christian Tan, a Web Developer specializing in React, Next.js, Supabase, and modern SaaS applications.",
+
   keywords: [
     "Karl Christian Tan",
     "Web Developer",
     "Next.js Developer",
     "React Developer",
-    "Supabase",
     "Frontend Developer",
+    "Supabase",
     "Portfolio",
+    "Full Stack Developer",
   ],
+
   authors: [{ name: "Karl Christian Tan" }],
   creator: "Karl Christian Tan",
+
+  alternates: {
+    canonical: "/",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+
   openGraph: {
-    title: "Karl Christian Tan | Web Developer",
-    description:
-      "Modern portfolio showcasing landing pages, and full-stack projects built with Next.js and React.",
-    url: "https://mantis-portfolio.vercel.app/",
+    type: "website",
+    locale: "en_US",
+    url: "https://mantis-portfolio.vercel.app",
     siteName: "Karl Christian Tan Portfolio",
+    title: "Karl Christian Tan | Web Developer & Software Builder",
+    description:
+      "Modern portfolio showcasing full-stack projects built with Next.js, React, and Supabase.",
     images: [
       {
-        url: "https://mantis-portfolio.vercel.app/og-image.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
+        alt: "Karl Christian Tan Portfolio Preview",
       },
     ],
-    type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
     title: "Karl Christian Tan | Web Developer",
     description:
       "Portfolio showcasing modern web apps built with Next.js, React, and Supabase.",
-    images: ["https://mantis-portfolio.vercel.app/og-image.png"],
+    images: ["/og-image.png"],
   },
+
   icons: {
     icon: "/favicon.ico",
   },
 }
 
+/* =========================
+   VIEWPORT (MOBILE SEO)
+========================= */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+}
+
+/* =========================
+   STRUCTURED DATA (SEO BOOST)
+========================= */
+function StructuredData() {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Karl Christian Tan",
+          url: "https://mantis-portfolio.vercel.app",
+          jobTitle: "Web Developer",
+          description:
+            "Frontend and Full Stack Developer specializing in React, Next.js, and Supabase.",
+          sameAs: [
+            "https://github.com/yourusername",
+            "https://linkedin.com/in/yourusername",
+          ],
+        }),
+      }}
+    />
+  )
+}
+
+/* =========================
+   ROOT LAYOUT
+========================= */
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html
       lang="en"
-      suppressHydrationWarning
-      className={cn(
-        "antialiased",
-        fontMono.variable,
-        "font-sans",
-        inter.variable
-      )}
+      className={cn(inter.variable, fontMono.variable, "antialiased")}
     >
-      <body>{children}</body>
+      <body>
+        <StructuredData />
+        {children}
+      </body>
     </html>
   )
 }
