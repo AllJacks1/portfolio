@@ -1,4 +1,3 @@
-import { Contact } from "lucide-react"
 import Navbar from "./coomponents/NavigationBar"
 import AboutMe from "./coomponents/sections/AboutMe"
 import Certifications from "./coomponents/sections/Certifications"
