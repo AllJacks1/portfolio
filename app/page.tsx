@@ -1,5 +1,6 @@
 import Navbar from "./coomponents/NavigationBar"
 import AboutMe from "./coomponents/sections/AboutMe"
+import ExperienceEducation from "./coomponents/sections/ExperienceAndEducation"
 import Footer from "./coomponents/sections/Footer"
 import HeroSection from "./coomponents/sections/HeroSection"
 import Projects from "./coomponents/sections/Projects"
@@ -14,7 +15,7 @@ export default function Page() {
       <TrustedTechnologies/>
       <Projects />
       <SkillsToolkit/>
-      <div className="bg-neutral-950 py-16" />
+      <ExperienceEducation/>
       <Footer />
     </div>
   )

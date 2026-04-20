@@ -41,11 +41,6 @@ export default function SkillsToolkit() {
       id="skills"
       className="relative overflow-hidden bg-[#0F172A] py-24"
     >
-      {/* Background Elements */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-0 left-1/3 h-[500px] w-[500px] rounded-full bg-[#4F46E5]/5 blur-[120px]" />
-        <div className="absolute right-1/3 bottom-0 h-[500px] w-[500px] rounded-full bg-[#06B6D4]/5 blur-[120px]" />
-      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Section Header */}
