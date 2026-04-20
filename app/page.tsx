@@ -1,3 +1,4 @@
+import { Contact } from "lucide-react"
 import Navbar from "./coomponents/NavigationBar"
 import AboutMe from "./coomponents/sections/AboutMe"
 import Certifications from "./coomponents/sections/Certifications"
@@ -8,6 +9,7 @@ import Projects from "./coomponents/sections/Projects"
 import ResumeDownload from "./coomponents/sections/Resume"
 import SkillsToolkit from "./coomponents/sections/SkillsAndToolkit"
 import TrustedTechnologies from "./coomponents/sections/TrustedTechnologies"
+import ContactCTA from "./coomponents/sections/Contact"
 
 export default function Page() {
   return (
@@ -20,6 +22,8 @@ export default function Page() {
       <ExperienceEducation/>
       <Certifications/>
       <ResumeDownload/>
+      <AboutMe/>
+      <ContactCTA/>
       <Footer />
     </div>
   )
