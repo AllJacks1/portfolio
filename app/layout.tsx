@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     siteName: "Karl Christian Tan Portfolio",
     title: "Karl Christian Tan | Web Developer & Software Builder",
     description:
-      "Modern portfolio showcasing full-stack projects built with Next.js, React, and Supabase.",
+      "Portfolio of Karl Christian Tan, a Web Developer and Information Technology graduate specializing in building modern, high-performance full-stack web applications using React, Next.js, TypeScript, and Supabase. Showcasing real-world SaaS projects, UI engineering, and scalable frontend architecture.",
     images: [
       {
         url: "/og-image.png",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Karl Christian Tan | Web Developer",
     description:
-      "Portfolio showcasing modern web apps built with Next.js, React, and Supabase.",
+      "Portfolio of Karl Christian Tan, a Web Developer and Information Technology graduate specializing in building modern, high-performance full-stack web applications using React, Next.js, TypeScript, and Supabase. Showcasing real-world SaaS projects, UI engineering, and scalable frontend architecture.",
     images: ["/og-image.png"],
   },
 
@@ -108,10 +108,10 @@ function StructuredData() {
           url: "https://mantis-portfolio.vercel.app",
           jobTitle: "Web Developer",
           description:
-            "Frontend and Full Stack Developer specializing in React, Next.js, and Supabase.",
+            "Portfolio of Karl Christian Tan, a Web Developer and Information Technology graduate specializing in building modern, high-performance full-stack web applications using React, Next.js, TypeScript, and Supabase. Showcasing real-world SaaS projects, UI engineering, and scalable frontend architecture.",
           sameAs: [
-            "https://github.com/yourusername",
-            "https://linkedin.com/in/yourusername",
+            "https://github.com/AllJacks1",
+            "https://www.linkedin.com/in/karl-christian-tan-366740227",
           ],
         }),
       }}
