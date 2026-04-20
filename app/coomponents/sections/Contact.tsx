@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -19,12 +18,12 @@ const opportunities = [
 ]
 
 const socialLinks = [
-  { label: "Email", href: "mailto:hello@example.com", icon: Mail },
+  { label: "Email", href: "mailto:tankarlchristian@gmail.com", icon: Mail },
 ]
 
 export default function ContactCTA() {
   return (
-    <section className="bg-[#0F172A] py-24">
+    <section id="contact" className="bg-[#0F172A] py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <h2 className="mb-6 text-4xl font-bold tracking-tight text-[#E5E7EB] md:text-5xl">

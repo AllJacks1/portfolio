@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import { Button } from "@/components/ui/button"
+import React from "react";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,34 +9,18 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
-import { Download, FileText, Check, Loader2, FileCheck } from "lucide-react"
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { Download, FileText, Check, Loader2, FileCheck, AlertCircle } from "lucide-react";
+import { useDownload } from "@/hooks/useDownload";
 
 export default function ResumeDownload() {
-  const [isDownloading, setIsDownloading] = useState(false)
-  const [isDownloaded, setIsDownloaded] = useState(false)
+  const { isDownloading, isDownloaded, download, error } = useDownload(800);
 
-  const handleDownload = async () => {
-    setIsDownloading(true)
-
-    // Simulate download delay for UX
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    const link = document.createElement("a")
-    link.href = "/resume.pdf"
-    link.download = "resume.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-
-    setIsDownloading(false)
-    setIsDownloaded(true)
-
-    // Reset success state after 3 seconds
-    setTimeout(() => setIsDownloaded(false), 3000)
-  }
+  const handleDownload = () => {
+    download("/api/resume", "Karl_Christian_Tan_Resume.pdf");
+  };
 
   return (
     <section className="bg-[#0F172A] py-24">
@@ -80,9 +64,16 @@ export default function ResumeDownload() {
                   </p>
                 </div>
               </div>
+
+              {error && (
+                <div className="mt-4 flex items-center gap-2 rounded-lg border border-red-500/20 bg-red-500/10 p-3 text-sm text-red-400">
+                  <AlertCircle className="h-4 w-4" />
+                  {error}
+                </div>
+              )}
             </CardContent>
 
-            <CardFooter className="pt-4 pb-6 bg-[#111827] border-[#111827]">
+            <CardFooter className="bg-[#111827] border-[#111827] pt-4 pb-6">
               <Button
                 onClick={handleDownload}
                 disabled={isDownloading || isDownloaded}
@@ -114,5 +105,5 @@ export default function ResumeDownload() {
         </div>
       </div>
     </section>
-  )
+  );
 }

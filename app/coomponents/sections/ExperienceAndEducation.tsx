@@ -35,7 +35,7 @@ const experiences = [
 
 export default function ExperienceEducation() {
   return (
-    <section id="about" className="relative overflow-hidden bg-[#0F172A] py-24">
+    <section className="relative overflow-hidden bg-[#0F172A] py-24">
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Section Header */}
         <motion.div

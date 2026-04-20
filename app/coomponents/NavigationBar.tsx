@@ -8,8 +8,9 @@ import {
   SheetTrigger,
   SheetTitle,
 } from "@/components/ui/sheet"
-import { Menu, Download, X } from "lucide-react"
+import { Menu, Download, X, Check, Loader2, AlertCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useDownload } from "@/hooks/useDownload"
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -23,6 +24,7 @@ const navLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const { isDownloading, isDownloaded, download, error } = useDownload(800)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,6 +40,42 @@ export default function Navbar() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
+  }
+
+  const handleDownload = () => {
+    download("/api/resume", "Karl_Christian_Tan_Resume.pdf")
+  }
+
+  const getButtonContent = () => {
+    if (isDownloading) {
+      return (
+        <>
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          Downloading...
+        </>
+      )
+    }
+    if (isDownloaded) {
+      return (
+        <>
+          <Check className="mr-2 h-4 w-4" />
+          Downloaded
+        </>
+      )
+    }
+    return (
+      <>
+        <Download className="mr-2 h-4 w-4" />
+        Download Resume
+      </>
+    )
+  }
+
+  const getButtonClass = () => {
+    if (isDownloaded) {
+      return "border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20"
+    }
+    return "bg-gradient-to-r from-[#4F46E5] to-[#06B6D4] text-white shadow-lg shadow-[#4F46E5]/25 hover:scale-[1.02] hover:from-[#4338CA] hover:to-[#0891B2] hover:shadow-[#4F46E5]/40 active:scale-[0.98]"
   }
 
   return (
@@ -83,10 +121,21 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
-          <Button className="bg-gradient-to-r from-[#4F46E5] to-[#06B6D4] px-6 font-semibold text-white shadow-lg shadow-[#4F46E5]/25 transition-all duration-300 hover:scale-[1.02] hover:from-[#4338CA] hover:to-[#0891B2] hover:shadow-[#4F46E5]/40 active:scale-[0.98]">
-            <Download className="mr-2 h-4 w-4" />
-            Download Resume
+          <Button
+            onClick={handleDownload}
+            disabled={isDownloading || isDownloaded}
+            className={cn(
+              "px-6 font-semibold transition-all duration-300",
+              getButtonClass()
+            )}
+          >
+            {getButtonContent()}
           </Button>
+          {error && (
+            <span className="absolute top-full right-6 mt-2 text-xs text-red-400">
+              {error}
+            </span>
+          )}
         </div>
 
         {/* Mobile Menu */}
@@ -146,11 +195,23 @@ export default function Navbar() {
               </div>
 
               {/* Mobile CTA */}
-              <div className="border-t border-white/5 p-6">
-                <Button className="w-full bg-gradient-to-r from-[#4F46E5] to-[#06B6D4] py-6 font-semibold text-white shadow-lg shadow-[#4F46E5]/25 transition-all duration-300 hover:from-[#4338CA] hover:to-[#0891B2] active:scale-[0.98]">
-                  <Download className="mr-2 h-4 w-4" />
-                  Download Resume
+              <div className="space-y-3 border-t border-white/5 p-6">
+                <Button
+                  onClick={handleDownload}
+                  disabled={isDownloading || isDownloaded}
+                  className={cn(
+                    "w-full py-6 font-semibold transition-all duration-300",
+                    getButtonClass()
+                  )}
+                >
+                  {getButtonContent()}
                 </Button>
+                {error && (
+                  <div className="flex items-center gap-2 rounded-lg border border-red-500/20 bg-red-500/10 p-3 text-xs text-red-400">
+                    <AlertCircle className="h-3 w-3" />
+                    {error}
+                  </div>
+                )}
               </div>
             </div>
           </SheetContent>

@@ -37,7 +37,7 @@ const storySteps = [
 
 export default function AboutStory() {
   return (
-    <section className="py-24 bg-[#0F172A]">
+    <section id="about" className="py-24 bg-[#0F172A]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16 text-center">
           <h2 className="text-4xl font-bold tracking-tight text-[#E5E7EB] mb-4">
