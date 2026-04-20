@@ -3,6 +3,7 @@ import AboutMe from "./coomponents/sections/AboutMe"
 import Footer from "./coomponents/sections/Footer"
 import HeroSection from "./coomponents/sections/HeroSection"
 import Projects from "./coomponents/sections/Projects"
+import SkillsToolkit from "./coomponents/sections/SkillsAndToolkit"
 import TrustedTechnologies from "./coomponents/sections/TrustedTechnologies"
 
 export default function Page() {
@@ -11,8 +12,8 @@ export default function Page() {
       <Navbar />
       <HeroSection />
       <TrustedTechnologies/>
-      <AboutMe />
       <Projects />
+      <SkillsToolkit/>
       <div className="bg-neutral-950 py-16" />
       <Footer />
     </div>
