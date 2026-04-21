@@ -34,6 +34,15 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    title: "Astria Insurance Solutions Landing Page",
+    description:
+      "Astria Insurance Solutions helps individuals, families, and businesses build structured insurance protection plans that safeguard income, assets, and long-term financial security. By assessing risks, comparing multiple insurers, and designing comprehensive coverage strategies, Astria ensures clients are fully protected against unexpected life events while eliminating coverage gaps.",
+    techStack: ["React Vite", "CSS"],
+    images: ["/astria.png"],
+    liveUrl: "https://astriainsurancesolutions.vercel.app/",
+  },
+  {
+    id: 2,
     title: "Avaris Sales Solutions Landing Page",
     description:
       "Avaris Sales Solutions delivers 24/7 outsourced sales support that turns leads into revenue. We handle inquiry management, lead qualification, structured follow-ups, and sales reporting—so your business never misses an opportunity, even when you're offline. From small businesses to growing companies, we build reliable sales systems that replace scattered efforts with predictable growth. We Sell, You Excel.",
@@ -42,7 +51,7 @@ const projects: Project[] = [
     liveUrl: "https://avarissalessolutions.vercel.app",
   },
   {
-    id: 2,
+    id: 3,
     title: "Axis Marketing Solutions Landing Page",
     description:
       "Axis Marketing Solutions transforms your vision into visuals through strategic marketing that converts. We help businesses increase visibility, attract qualified leads, and build memorable brand identities through social media management, paid advertising, branding design, and content production. Unlike agencies that chase likes, we chase results—because likes don't pay the bills. Our data-driven approach replaces scattered tactics with systematic growth, delivering 3x more leads, +150% engagement, and 2.5x ROI increases for growing brands.",
@@ -51,7 +60,7 @@ const projects: Project[] = [
     liveUrl: "https://axismarketingsolutions-virid.vercel.app",
   },
   {
-    id: 3,
+    id: 4,
     title: "Axial Real Estate Services Landing Page",
     description:
       "Axial provides tailored real estate solutions for buyers, investors, and developers in Davao City. Whether you're seeking move-in-ready homes with Pag-IBIG financing or strategic land investments for long-term growth, we make property transactions faster, easier, and more transparent. Our team handles the legwork and paperwork so you can focus on what matters—turning properties into opportunities.",
@@ -60,7 +69,7 @@ const projects: Project[] = [
     liveUrl: "https://axialrealestate-services.vercel.app",
   },
   {
-    id: 4,
+    id: 5,
     title: "IssueLane Ticket Management System",
     description:
       "IssueLane helps developers stay organized with a unified dashboard for support tickets and development tasks. Create tickets, track resolution progress, manage web development assignments, and monitor completion status—all in one streamlined interface. Built for developers who need clarity between customer support and project deliverables.",
