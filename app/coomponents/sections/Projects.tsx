@@ -39,7 +39,7 @@ const projects: Project[] = [
       "Astria Insurance Solutions helps individuals, families, and businesses build structured insurance protection plans that safeguard income, assets, and long-term financial security. By assessing risks, comparing multiple insurers, and designing comprehensive coverage strategies, Astria ensures clients are fully protected against unexpected life events while eliminating coverage gaps.",
     techStack: ["React Vite", "CSS"],
     images: ["/astria.png"],
-    liveUrl: "https://astriainsurancesolutions.vercel.app/",
+    liveUrl: "https://astria.astragroupph.com",
   },
   {
     id: 2,
@@ -48,7 +48,7 @@ const projects: Project[] = [
       "Avaris Sales Solutions delivers 24/7 outsourced sales support that turns leads into revenue. We handle inquiry management, lead qualification, structured follow-ups, and sales reporting—so your business never misses an opportunity, even when you're offline. From small businesses to growing companies, we build reliable sales systems that replace scattered efforts with predictable growth. We Sell, You Excel.",
     techStack: ["React Vite", "CSS"],
     images: ["/avaris.png"],
-    liveUrl: "https://avarissalessolutions.vercel.app",
+    liveUrl: "https://avaris.astragroupph.com",
   },
   {
     id: 3,
@@ -57,7 +57,7 @@ const projects: Project[] = [
       "Axis Marketing Solutions transforms your vision into visuals through strategic marketing that converts. We help businesses increase visibility, attract qualified leads, and build memorable brand identities through social media management, paid advertising, branding design, and content production. Unlike agencies that chase likes, we chase results—because likes don't pay the bills. Our data-driven approach replaces scattered tactics with systematic growth, delivering 3x more leads, +150% engagement, and 2.5x ROI increases for growing brands.",
     techStack: ["React Vite", "CSS"],
     images: ["/axis.png"],
-    liveUrl: "https://axismarketingsolutions-virid.vercel.app",
+    liveUrl: "https://axis.astragroupph.com",
   },
   {
     id: 4,
@@ -66,7 +66,7 @@ const projects: Project[] = [
       "Axial provides tailored real estate solutions for buyers, investors, and developers in Davao City. Whether you're seeking move-in-ready homes with Pag-IBIG financing or strategic land investments for long-term growth, we make property transactions faster, easier, and more transparent. Our team handles the legwork and paperwork so you can focus on what matters—turning properties into opportunities.",
     techStack: ["Next.js", "Supabase", "Tailwind CSS"],
     images: ["/axial.png"],
-    liveUrl: "https://axialrealestate-services.vercel.app",
+    liveUrl: "https://axial.astragroupph.com",
   },
   {
     id: 5,
