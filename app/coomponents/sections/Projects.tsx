@@ -34,6 +34,47 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    title: "Astra Group of Companies Inc. — Corporate Landing Page",
+    description:
+      "A corporate landing page showcasing the company’s services, capabilities, and business information to strengthen credibility and reach both local and international clients.",
+    techStack: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    images: ["/astra.png"],
+    liveUrl: "https://www.astragroupph.com/",
+  },
+  {
+    id: 2,
+    title: "iHub Coworking Space & Bistro — Business Landing Page",
+    description: "Features coworking and study spaces, events, activities, and the bistro’s menu, with convenient reservation booking for customers.",
+    techStack: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    images: ["/ihub.png"],
+    liveUrl: "https://ihubcoworking.astragroupph.com/",
+  },
+  {
+    id: 3,
+    title: "iAccess — Customer Rewards System",
+    description: "A web-based rewards system to encourage customer loyalty, increase engagement, and drive repeat visits to iHub Coworking Space & Bistro.",
+    techStack: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    images: ["/iaccess.png"],
+    liveUrl: "https://ihubcoworking.astragroupph.com/iaccess/login",
+  },
+  {
+    id: 4,
+    title: "Procurement Management System",
+    description: "A centralized web application to streamline procurement workflows, track fund movements, improve data consistency, and secure sensitive information through role-based access control.",
+    techStack: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    images: ["/procurement.png"],
+    liveUrl: "https://astra-portal.vercel.app",
+  },
+  {
+    id: 5,
+    title: "Easy Loans — Loan Management System",
+    description: "A loan management system to track borrowers, monitor loan balances and repayments, manage loan records, and analyze revenue for improved financial oversight.",
+    techStack: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    images: ["/easyloan.png"],
+    liveUrl: "https://easyloan-finance.vercel.app/",
+  },
+  {
+    id: 6,
     title: "Astria Insurance Solutions Landing Page",
     description:
       "Astria Insurance Solutions helps individuals, families, and businesses build structured insurance protection plans that safeguard income, assets, and long-term financial security. By assessing risks, comparing multiple insurers, and designing comprehensive coverage strategies, Astria ensures clients are fully protected against unexpected life events while eliminating coverage gaps.",
@@ -42,7 +83,7 @@ const projects: Project[] = [
     liveUrl: "https://astria.astragroupph.com",
   },
   {
-    id: 2,
+    id: 7,
     title: "Avaris Sales Solutions Landing Page",
     description:
       "Avaris Sales Solutions delivers 24/7 outsourced sales support that turns leads into revenue. We handle inquiry management, lead qualification, structured follow-ups, and sales reporting—so your business never misses an opportunity, even when you're offline. From small businesses to growing companies, we build reliable sales systems that replace scattered efforts with predictable growth. We Sell, You Excel.",
@@ -51,7 +92,7 @@ const projects: Project[] = [
     liveUrl: "https://avaris.astragroupph.com",
   },
   {
-    id: 3,
+    id: 8,
     title: "Axis Marketing Solutions Landing Page",
     description:
       "Axis Marketing Solutions transforms your vision into visuals through strategic marketing that converts. We help businesses increase visibility, attract qualified leads, and build memorable brand identities through social media management, paid advertising, branding design, and content production. Unlike agencies that chase likes, we chase results—because likes don't pay the bills. Our data-driven approach replaces scattered tactics with systematic growth, delivering 3x more leads, +150% engagement, and 2.5x ROI increases for growing brands.",
@@ -60,7 +101,7 @@ const projects: Project[] = [
     liveUrl: "https://axis.astragroupph.com",
   },
   {
-    id: 4,
+    id: 9,
     title: "Axial Real Estate Services Landing Page",
     description:
       "Axial provides tailored real estate solutions for buyers, investors, and developers in Davao City. Whether you're seeking move-in-ready homes with Pag-IBIG financing or strategic land investments for long-term growth, we make property transactions faster, easier, and more transparent. Our team handles the legwork and paperwork so you can focus on what matters—turning properties into opportunities.",
@@ -69,12 +110,13 @@ const projects: Project[] = [
     liveUrl: "https://axial.astragroupph.com",
   },
   {
-    id: 5,
+    id: 10,
     title: "IssueLane Ticket Management System",
     description:
       "IssueLane helps developers stay organized with a unified dashboard for support tickets and development tasks. Create tickets, track resolution progress, manage web development assignments, and monitor completion status—all in one streamlined interface. Built for developers who need clarity between customer support and project deliverables.",
     techStack: ["Next.js", "Supabase", "Tailwind CSS"],
     images: [
+      "/issue-lane-hero.png",
       "/issue-lane-1.png",
       "/issue-lane-2.png",
       "/issue-lane-3.png",
