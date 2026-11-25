@@ -1,29 +1,27 @@
-import Navbar from "./coomponents/NavigationBar"
-import AboutMe from "./coomponents/sections/AboutMe"
-import Certifications from "./coomponents/sections/Certifications"
-import ExperienceEducation from "./coomponents/sections/ExperienceAndEducation"
-import Footer from "./coomponents/sections/Footer"
-import HeroSection from "./coomponents/sections/HeroSection"
-import Projects from "./coomponents/sections/Projects"
-import ResumeDownload from "./coomponents/sections/Resume"
-import SkillsToolkit from "./coomponents/sections/SkillsAndToolkit"
-import TrustedTechnologies from "./coomponents/sections/TrustedTechnologies"
-import ContactCTA from "./coomponents/sections/Contact"
+import About from "@/components/site/About"
+import Certifications from "@/components/site/Certifications"
+import Contact from "@/components/site/Contact"
+import Experience from "@/components/site/Experience"
+import Footer from "@/components/site/Footer"
+import Header from "@/components/site/Header"
+import Hero from "@/components/site/Hero"
+import Projects from "@/components/site/Projects"
+import Skills from "@/components/site/Skills"
 
 export default function Page() {
   return (
-    <div>
-      <Navbar />
-      <HeroSection />
-      <TrustedTechnologies/>
-      <Projects />
-      <SkillsToolkit/>
-      <ExperienceEducation/>
-      <Certifications/>
-      <ResumeDownload/>
-      <AboutMe/>
-      <ContactCTA/>
+    <>
+      <Header />
+      <main id="main">
+        <Hero />
+        <Projects />
+        <Experience />
+        <Skills />
+        <Certifications />
+        <About />
+        <Contact />
+      </main>
       <Footer />
-    </div>
+    </>
   )
 }
