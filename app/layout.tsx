@@ -1,140 +1,174 @@
 import type { Metadata, Viewport } from "next"
-import { Inter, Geist_Mono } from "next/font/google"
+import { Red_Hat_Display, Red_Hat_Text } from "next/font/google"
+
+import {
+  certificates,
+  education,
+  projects,
+  site,
+  skillGroups,
+} from "@/lib/site"
 import "./globals.css"
-import { cn } from "@/lib/utils"
 
-const inter = Inter({
+const display = Red_Hat_Display({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--ff-display",
+  display: "swap",
 })
 
-const fontMono = Geist_Mono({
+const text = Red_Hat_Text({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--ff-text",
+  display: "swap",
 })
 
-/* =========================
-   SEO METADATA
-========================= */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mantis-portfolio.vercel.app"),
-
+  metadataBase: new URL(site.url),
   title: {
-    default: "Karl Christian Tan | Web Developer & Software Builder",
-    template: "%s | Karl Christian Tan",
+    default: site.title,
+    template: `%s | ${site.name}`,
   },
-
-  description:
-    "Portfolio of Karl Christian Tan, a Web Developer specializing in React, Next.js, Supabase, and modern SaaS applications.",
-
-  keywords: [
-    "Karl Christian Tan",
-    "Web Developer",
-    "Next.js Developer",
-    "React Developer",
-    "Frontend Developer",
-    "Supabase",
-    "Portfolio",
-    "Full Stack Developer",
-  ],
-
-  authors: [{ name: "Karl Christian Tan" }],
-  creator: "Karl Christian Tan",
-
-  alternates: {
-    canonical: "/",
-  },
-
+  description: site.description,
+  applicationName: `${site.name} Portfolio`,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  category: "technology",
+  alternates: { canonical: "/" },
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
-
   openGraph: {
-    type: "website",
+    type: "profile",
     locale: "en_US",
-    url: "https://mantis-portfolio.vercel.app",
-    siteName: "Karl Christian Tan Portfolio",
-    title: "Karl Christian Tan | Web Developer & Software Builder",
-    description:
-      "Portfolio of Karl Christian Tan, a Web Developer and Information Technology graduate specializing in building modern, high-performance full-stack web applications using React, Next.js, TypeScript, and Supabase. Showcasing real-world SaaS projects, UI engineering, and scalable frontend architecture.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Karl Christian Tan Portfolio Preview",
-      },
-    ],
+    url: "/",
+    siteName: `${site.name} Portfolio`,
+    title: site.title,
+    description: site.description,
+    firstName: "Karl Christian",
+    lastName: "Tan",
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "Karl Christian Tan | Web Developer",
-    description:
-      "Portfolio of Karl Christian Tan, a Web Developer and Information Technology graduate specializing in building modern, high-performance full-stack web applications using React, Next.js, TypeScript, and Supabase. Showcasing real-world SaaS projects, UI engineering, and scalable frontend architecture.",
-    images: ["/og-image.png"],
+    title: site.title,
+    description: site.description,
   },
-
-  icons: {
-    icon: "/favicon.ico",
-  },
+  formatDetection: { telephone: false, address: false, email: false },
 }
 
-/* =========================
-   VIEWPORT (MOBILE SEO)
-========================= */
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#ffffff",
+  colorScheme: "light",
 }
 
-/* =========================
-   STRUCTURED DATA (SEO BOOST)
-========================= */
-function StructuredData() {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: "Karl Christian Tan",
-          url: "https://mantis-portfolio.vercel.app",
-          jobTitle: "Web Developer",
-          description:
-            "Portfolio of Karl Christian Tan, a Web Developer and Information Technology graduate specializing in building modern, high-performance full-stack web applications using React, Next.js, TypeScript, and Supabase. Showcasing real-world SaaS projects, UI engineering, and scalable frontend architecture.",
-          sameAs: [
-            "https://github.com/AllJacks1",
-            "https://www.linkedin.com/in/karl-christian-tan-366740227",
-          ],
-        }),
-      }}
-    />
-  )
+/* Person, WebSite and ProfilePage in one graph, with the projects as an ItemList. */
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: `${site.name} Portfolio`,
+      description: site.description,
+      inLanguage: "en",
+      publisher: { "@id": `${site.url}/#person` },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${site.url}/#profile`,
+      url: site.url,
+      name: site.title,
+      description: site.description,
+      inLanguage: "en",
+      isPartOf: { "@id": `${site.url}/#website` },
+      about: { "@id": `${site.url}/#person` },
+      mainEntity: { "@id": `${site.url}/#person` },
+      primaryImageOfPage: `${site.url}/opengraph-image`,
+    },
+    {
+      "@type": "Person",
+      "@id": `${site.url}/#person`,
+      name: site.name,
+      givenName: "Karl Christian",
+      familyName: "Tan",
+      url: site.url,
+      image: `${site.url}/opengraph-image`,
+      email: `mailto:${site.email}`,
+      jobTitle: site.role,
+      description: site.description,
+      worksFor: { "@type": "Organization", name: site.employer },
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: education.school,
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: site.city,
+        addressCountry: site.countryCode,
+      },
+      knowsLanguage: ["en", "fil"],
+      knowsAbout: skillGroups.flatMap((group) => group.skills),
+      hasCredential: certificates.map((certificate) => ({
+        "@type": "EducationalOccupationalCredential",
+        name: certificate.title,
+        recognizedBy: { "@type": "Organization", name: certificate.issuer },
+      })),
+      sameAs: [site.github, site.linkedin],
+    },
+    {
+      "@type": "ItemList",
+      "@id": `${site.url}/#projects`,
+      name: `Projects by ${site.name}`,
+      numberOfItems: projects.length,
+      itemListElement: projects.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "CreativeWork",
+          name: project.name,
+          description: project.description,
+          url: project.url,
+          genre: project.kind,
+          keywords: project.tech.join(", "),
+          creator: { "@id": `${site.url}/#person` },
+        },
+      })),
+    },
+  ],
 }
 
-/* =========================
-   ROOT LAYOUT
-========================= */
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="en"
-      className={cn(inter.variable, fontMono.variable, "antialiased")}
-    >
+    <html lang="en" className={`${display.variable} ${text.variable}`}>
       <body>
-        <StructuredData />
+        <a
+          href="#main"
+          className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-3 focus-visible:left-3 focus-visible:z-50 focus-visible:rounded-lg focus-visible:bg-ink focus-visible:px-4 focus-visible:py-3 focus-visible:text-white"
+        >
+          Skip to content
+        </a>
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          }}
+        />
       </body>
     </html>
   )
